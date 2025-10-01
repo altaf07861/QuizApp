@@ -1,0 +1,64 @@
+
+<web-app>
+
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <listener>
+  	<listener-class>com.app.DatabaseConnection</listener-class>
+  </listener>
+  
+  <servlet>
+  	<servlet-name>registerServlet</servlet-name>
+  	<servlet-class>com.app.registerServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>registerServlet</servlet-name>
+  		<url-pattern>/registerServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>loginServlet</servlet-name>
+  	<servlet-class>com.app.loginServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+  		<servlet-name>loginServlet</servlet-name>
+  		<url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>UploadMaterialServlet</servlet-name>
+  	<servlet-class>com.app.UploadMaterialServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>UploadMaterialServlet</servlet-name>
+  		<url-pattern>/UploadMaterialServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.app.logout</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+  		<servlet-name>logout</servlet-name>
+  		<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>QuizGenerationServlet</servlet-name>
+  	<servlet-class>com.app.QuizGenerationServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+  		<servlet-name>QuizGenerationServlet</servlet-name>
+  		<url-pattern>/QuizGenerationServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+ 
+  
+</web-app>
