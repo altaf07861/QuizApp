@@ -22,7 +22,7 @@ public class QuizGenerationServlet extends HttpServlet {
 
    
 
-    private static final String GEMINI_API_KEY = "AIzaSyC1A-QjOKM9Gp4RbJ1972Smf4_EfHFawcA"; // 👈 set your key
+    private static final String GEMINI_API_KEY = ""; // 👈 set your key
     private static final String GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + GEMINI_API_KEY;
 
     // ✅ Static method so UploadMaterialServlet can call it directly
