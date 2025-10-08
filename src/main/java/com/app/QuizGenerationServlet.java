@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class QuizGenerationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static final String GEMINI_API_KEY = "AIzaSyC1A-QjOKM9Gp4RbJ1972Smf4_EfHFawcA"; // 👈 Replace with secure key
+    private static final String GEMINI_API_KEY = ""; // 👈 Replace with secure key
     private static final String GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + GEMINI_API_KEY;
 
     public static void generateQuiz(int materialId, String extractedText) throws Exception {
