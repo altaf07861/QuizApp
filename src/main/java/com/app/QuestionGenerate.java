@@ -1,7 +1,13 @@
 package com.app;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class QuestionGenerate {
 
@@ -37,7 +43,9 @@ public class QuestionGenerate {
                     }
                 }
 
-                if (keyword.isEmpty()) continue;
+                if (keyword.isEmpty()) {
+					continue;
+				}
 
                 // Step 4: Form a fill-in-the-blank question
                 String question = sentence.replaceFirst("(?i)" + keyword, "___");

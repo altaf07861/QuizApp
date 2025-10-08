@@ -41,9 +41,9 @@
 		<a href="quizlist.jsp" class="btn btn-success"> 
 		<i class="bi bi-question-circle-fill me-1"></i> Take Quiz
 		</a>
-		 <!-- --<a href="viewResults.jsp" class="btn btn-info"> 
+		<a href="allresult.jsp" class="btn btn-info"> 
 		<i class="bi bi-bar-chart-fill me-1"></i> View Results
-		</a> -->
+		</a>
 		 <a href="logout" class="btn btn-danger"> 
 		<i class="bi bi-box-arrow-right me-1"></i> Logout
 		</a>
@@ -67,7 +67,7 @@
 			// Fetch recent results from DB
 			try {
 				
-				PreparedStatement ps = con.prepareStatement("SELECT quizid, score, attempted_on FROM result WHERE userid=? ORDER BY attempted_on DESC LIMIT 5");
+				PreparedStatement ps = con.prepareStatement("SELECT quizid, score, attempted_on FROM result WHERE userid=? ORDER BY attempted_on DESC LIMIT 10");
 				ps.setInt(1, userId);
 				ResultSet rs = ps.executeQuery();
 

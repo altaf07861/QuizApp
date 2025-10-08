@@ -7,14 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.Loader;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,19 +22,20 @@ import jakarta.servlet.http.Part;
 
 @MultipartConfig
 public class UploadMaterialServlet extends HttpServlet {
-	
+
 	Connection con;
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init(config);
-		
+
 		con=(Connection)config.getServletContext().getAttribute("CONN");
 	}
-	
-	
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+
+
+    @Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
@@ -52,7 +52,9 @@ public class UploadMaterialServlet extends HttpServlet {
         String fileName = filePart.getSubmittedFileName();
         String uploadPath = getServletContext().getRealPath("") + File.separator + "/uploads";
         File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdir();
+        if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
 
         String filePath = uploadPath + File.separator + fileName;
         filePart.write(filePath);
@@ -73,8 +75,8 @@ public class UploadMaterialServlet extends HttpServlet {
         // Store in DB
         int materilaId=0;
         try {
-            	
-        
+
+
             PreparedStatement ps = con.prepareStatement("INSERT INTO study_material(userid, subject, content, file_path) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userId);
             ps.setString(2, subject);
@@ -98,10 +100,10 @@ public class UploadMaterialServlet extends HttpServlet {
             e.printStackTrace();
             response.getWriter().println("Error: " + e.getMessage());
         }
-        
+
         if(materilaId > 0 && !extractedText.isEmpty())
         {
-        	try 
+        	try
         		{
         			QuizGenerationServlet.generateQuiz(materilaId, extractedText);
         		}
@@ -109,7 +111,7 @@ public class UploadMaterialServlet extends HttpServlet {
 					// TODO: handle exception
         			e.printStackTrace();
 				}
-        	
+
         }
         else
         	{
@@ -117,6 +119,6 @@ public class UploadMaterialServlet extends HttpServlet {
         		QuestionGenerate.generateQuizFromMaterial(materilaId, extractedText);
         	}
         response.encodeRedirectURL("studentDashboard.jsp");
-        
+
     }
 }

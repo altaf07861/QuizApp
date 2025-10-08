@@ -17,9 +17,9 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/DeleteMaterialServlet")
 public class DeleteMaterialServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+
     Connection con;
-    
+
     @Override
     public void init(ServletConfig config) throws ServletException {
     	// TODO Auto-generated method stub
@@ -27,7 +27,8 @@ public class DeleteMaterialServlet extends HttpServlet {
     	con =(Connection) config.getServletContext().getAttribute("CONN");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
@@ -67,7 +68,7 @@ public class DeleteMaterialServlet extends HttpServlet {
 
             rs.close();
             ps.close();
-    
+
 
             response.sendRedirect("viewMaterials.jsp?deleted=1");
 

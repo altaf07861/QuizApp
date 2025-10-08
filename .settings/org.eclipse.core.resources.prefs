@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/allresult.jsp=UTF-8
 encoding//src/main/webapp/quizlist.jsp=UTF-8
 encoding//src/main/webapp/studentDashboard.jsp=UTF-8
 encoding//src/main/webapp/takeQuiz.jsp=UTF-8

@@ -1,7 +1,9 @@
 package com.app;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -15,9 +17,9 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/SubmitQuizServlet")
 public class SubmitQuizServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+
     Connection con;
-    
+
     @Override
     public void init(ServletConfig config) throws ServletException {
     	// TODO Auto-generated method stub
@@ -25,7 +27,8 @@ public class SubmitQuizServlet extends HttpServlet {
     	con=(Connection)config.getServletContext().getAttribute("CONN");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    @Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // ✅ Step 1: Session check

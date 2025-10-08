@@ -21,10 +21,11 @@
     <title>Take Quiz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="container mt-4">
 
-    <h2>📝 Quiz</h2>
+    <h2><h3><i class="fas fa-question-circle"></i> Quiz</h2>
     <hr/>
 
     <form action="SubmitQuizServlet" method="post">
